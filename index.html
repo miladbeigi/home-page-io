@@ -16,16 +16,29 @@
             display: flex;
             justify-content: center
         }
-      
-        .content {
-         z-index: 1;
-         text-align: center;
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+    
+         .time {
+         font-size: 4rem;
          font-style: italic;
-         display: flex;
-         justify-content: center;
-         color: rgb(35, 173, 207);
-        
-    }
+         margin-bottom: 20px;
+         font-family: 'Times New Roman', Times, serif;
+         z-index: 1;
+         font-weight: bolder;
+        }
+        .date {
+           font-size: 2rem; ; 
+           font-style: italic;
+           font-family: 'Times New Roman', Times, serif;
+           font-weight: bold;
+           z-index: 1;
+        }
      /* Add blur effect */
      .blurry-background {
             filter: blur(3px); /* Adjust blur intensity as needed */
@@ -41,9 +54,13 @@
 
 <body> 
     <div class="blurry-background"></div>
-    <div class="container">
+    <div class="overlay">
+        <div class="time" id="time"></div>
+        <dive class="date"  id="date"></dive>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+   
+    <!-- show background images randomly by every refresh -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
            const images = ['scr/image/background_image1.jpg'
@@ -56,7 +73,25 @@
           document.querySelector('.blurry-background').style.backgroundImage = `url(${images[randomIndex]})`;
 
         });
-    </script>  
+    </script> 
+    <!-- show time and date  -->
+    <script>
+
+        function updatetime(){
+            const now = new Date();
+            const timestring =now.toLocaleTimeString();
+            const options ={month:'long', day:'numeric',year:'numeric'};
+            const datestring = now.toLocaleDateString (undefined,options);
+            document.getElementById('time').innerText=timestring;
+            document.getElementById('date').innerText= datestring;
+
+        }
+        // update interval
+        setInterval(updatetime,1000);
+
+        // intial call for showing time and date 
+        updatetime();
+    </script> 
 </body>
 
 </html>
