@@ -1,0 +1,100 @@
+:root {
+    --app-height: 100vh;
+    --notes-width: 50em;
+    --page-width: 1600px;
+    --page-gap: 1em;
+    --links-width: auto;
+    --background-blur: 15px;
+    --background-brightness: .8;
+    --load-time-transition: 0ms;
+    --average-color: rgb(245, 242, 242);
+    --text-shadow-alpha: .2;
+    --notes-background-alpha: .1;
+    --searchbar-background-alpha: .1;
+    --font-family: -apple-system, system-ui, Ubuntu, Roboto, "Open Sans", "Segoe UI", "Helvetica Neue";
+    --font-weight-clock: 200;
+    --font-weight: 400;
+    --font-size: 1em;
+    --clock-size: 6em;
+    --red: 254, 59, 49;
+    --color-red: rgb(var(--red));
+    --color-green: #2ed058
+}
+
+body {
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    font-size: 1em;
+    text-align: center;
+    font-family: -apple-system,system-ui,Ubuntu,Roboto,Open Sans,Segoe UI,Helvetica Neue;
+    background-color: var(--average-color);
+    color: white;
+}
+#greeting {
+    font-size: 3em;
+    font-weight: inherit;
+    margin: 0;
+    width: 100%;
+    min-width: 300px;
+    text-overflow: ellipsis;
+}
+#main {
+    position: relative
+}
+#interface {
+    position: relative;
+    display: grid;
+    width: 100%;
+    gap: var(--page-gap);
+    max-width: var(--page-width);
+    padding: 4em 1em 6em;
+    margin: 0 auto;
+    box-sizing: border-box;
+    will-change: transform;
+    font-size: var(--font-size);
+    font-family: var(--font-family);
+    font-weight: var(--font-weight);
+    transition: opacity var(--load-time-transition),transform .4s;
+    text-shadow: 1px 2px 6px rgba(0,0,0,var(--text-shadow-alpha));
+   
+}
+
+ .time {
+ font-size: 4rem;
+ z-index: 1;
+ display: inline-block;
+ overflow: visible;
+}
+#date {
+   font-size: 1.5rem; ; 
+   z-index: 1;
+   display: inline-block;
+}
+
+/* Add blur effect */
+.blurry-background {
+    filter: blur(6px); /* Adjust blur intensity as needed */
+    position:absolute;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    z-index: -2; /* Ensure the blurred background is behind the content */
+}
+
+#background_overlay {
+    z-index: -1;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    min-height: 100lvh;
+    overflow: hidden;
+    opacity: 0;
+    transition: transform .4s,opacity .4s
+}
